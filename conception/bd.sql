@@ -1,11 +1,11 @@
 CREATE TABLE droit(
-   num_droit INT,
+   num_droit INT AUTOINCREMENT,
    libelle_droit VARCHAR(50),
    PRIMARY KEY(num_droit)
 );
 
 CREATE TABLE theme(
-   num_theme INT,
+   num_theme INT AUTOINCREMENT,
    libelle_theme VARCHAR(50),
    description_theme VARCHAR(50),
    PRIMARY KEY(num_theme)
@@ -20,7 +20,7 @@ CREATE TABLE utilisateur(
 );
 
 CREATE TABLE qcm(
-   num_qcm INT,
+   num_qcm INT AUTOINCREMENT,
    titre_qcm VARCHAR(50) NOT NULL,
    description_qcm VARCHAR(50),
    difficulte_qcm VARCHAR(50),
@@ -34,7 +34,7 @@ CREATE TABLE qcm(
 );
 
 CREATE TABLE question(
-   num_question INT,
+   num_question INT AUTOINCREMENT,
    intitule_question VARCHAR(50) NOT NULL,
    num_qcm INT NOT NULL,
    PRIMARY KEY(num_question),
@@ -42,7 +42,7 @@ CREATE TABLE question(
 );
 
 CREATE TABLE proposition(
-   num_reponse INT,
+   num_reponse INT AUTOINCREMENT,
    libelle_reponse VARCHAR(50),
    reponse_juste VARCHAR(50),
    note INT,
@@ -52,7 +52,7 @@ CREATE TABLE proposition(
 );
 
 CREATE TABLE passage(
-   num_passage INT,
+   num_passage INT AUTOINCREMENT,
    score INT NOT NULL,
    date_passage DATE NOT NULL,
    num_qcm INT NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE passage(
 );
 
 CREATE TABLE choisir(
-   num_passage INT,
+   num_passage INT AUTOINCREMENT,
    num_reponse INT,
    PRIMARY KEY(num_passage, num_reponse),
    FOREIGN KEY(num_passage) REFERENCES passage(num_passage),
@@ -71,7 +71,7 @@ CREATE TABLE choisir(
 );
 
 CREATE TABLE tirer(
-   num_passage INT,
+   num_passage INT AUTOINCREMENT,
    num_question INT,
    PRIMARY KEY(num_passage, num_question),
    FOREIGN KEY(num_passage) REFERENCES passage(num_passage),
